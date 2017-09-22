@@ -53,6 +53,7 @@ module.exports = function(context) {
 
           // Remove all of the frameworks because they were not embeded correctly.
           var frameworkPath = cfg.name() + "/Plugins/cordova-plugin-braintree/";
+          console.log("frameworkPath", frameworkPath);
           // xcodeProject.removeFramework(frameworkPath + "BraintreeVenmo.framework", {customFramework: true, embed: true, link: true});
           // xcodeProject.removeFramework(frameworkPath + "BraintreeUIKit.framework", {customFramework: true, embed: true, link: true});
           // xcodeProject.removeFramework(frameworkPath + "BraintreeDropIn.framework", {customFramework: true, embed: true, link: true});
