@@ -1,5 +1,6 @@
-// Type definitions for cordova-plugin-braintree 0.5.0
-// Project: https://github.com/Justin-Credible/cordova-plugin-braintree
+// Type definitions for cordova-plugin-braintree 0.5.1
+// Project: https://github.com/taracque/cordova-plugin-braintree
+// Definitions by: Taracque <https://github.com/taracque>
 // Definitions by: Justin Unterreiner <https://github.com/Justin-Credible>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
@@ -19,8 +20,18 @@ declare module BraintreePlugin {
         initialize(token: string, successCallback?: () => void, failureCallback?: (error: string) => void): void;
 
         /**
+         * Used to configure Apple Pay on iOS
+         * 
+         * @param options Apple Pay options.
+         * @param successCallback The success callback for this asynchronous function; receives a result object.
+         * @param failureCallback The failure callback for this asynchronous function; receives an error string.
+         */
+        setupApplePay(options?: ApplePayOptions, successCallback?: () => void, failureCallback?: (error: string) => void): void;
+
+        /**
          * Shows Braintree's drop-in payment UI.
          * 
+         * @param options drop-in UI options.
          * @param successCallback The success callback for this asynchronous function; receives a result object.
          * @param failureCallback The failure callback for this asynchronous function; receives an error string.
          */
@@ -28,27 +39,29 @@ declare module BraintreePlugin {
     }
 
     /**
+     * Options for the setupApplePay method.
+     */
+    interface ApplePayOptions {
+        /**
+         * Apple Merchant ID can be obtained from Apple.
+         */
+        merchantId: string;
+        
+        /**
+         * 3 letter currency code ISO 4217
+         */
+        currencyCode: string;
+        
+        /**
+         * 2 letter country code ISO 3166-1
+         */
+        countryCode: string;
+    }
+
+    /**
      * Options for the presentDropInPaymentUI method.
      */
     interface PaymentUIOptions {
-
-        /**
-         * Text to show on the cancel button.
-         * Defaults to "Cancel".
-         */
-        cancelText?: string;
-
-        /**
-         * Text to show on the title of the drop-in UI.
-         * Defaults to empty string.
-         */
-        title?: string;
-
-        /**
-         * Text to show on the call to action button in the drop-in UI.
-         * Defaults to "Select Payment Method".
-         */
-        ctaText?: string;
 
         /**
          * The amount of the transaction to show in the drop-in UI on the
@@ -63,13 +76,6 @@ declare module BraintreePlugin {
          * Defaults to empty string.
          */
         primaryDescription?: string;
-
-        /**
-         * The description of the transaction to show in the drop-in UI on the
-         * summary row.
-         * Defaults to empty string.
-         */
-        secondaryDescription?: string;
     }
 
     /**

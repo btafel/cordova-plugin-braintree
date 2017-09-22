@@ -53,14 +53,31 @@ module.exports = function(context) {
 
           // Remove all of the frameworks because they were not embeded correctly.
           var frameworkPath = cfg.name() + "/Plugins/cordova-plugin-braintree/";
+          // xcodeProject.removeFramework(frameworkPath + "BraintreeVenmo.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "BraintreeUIKit.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "BraintreeDropIn.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "BraintreePayPal.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "BraintreeDataCollector.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "BraintreeCore.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "BraintreeCard.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "BraintreeApplePay.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.removeFramework(frameworkPath + "Braintree3DSecure.framework", {customFramework: true, embed: true, link: true});
+
+
+          xcodeProject.removeFramework(frameworkPath + "PayPalUtils.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.removeFramework(frameworkPath + "PayPalDataCollector.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.removeFramework(frameworkPath + "PayPalOneTouch.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.removeFramework(frameworkPath + "BraintreeVenmo.framework", {customFramework: true, embed: true, link: true});
-          xcodeProject.removeFramework(frameworkPath + "BraintreeUI.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.removeFramework(frameworkPath + "BraintreeUnionPay.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.removeFramework(frameworkPath + "BraintreeUIKit.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.removeFramework(frameworkPath + "BraintreeDropIn.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.removeFramework(frameworkPath + "BraintreePayPal.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.removeFramework(frameworkPath + "BraintreeDataCollector.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.removeFramework(frameworkPath + "BraintreeCore.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.removeFramework(frameworkPath + "BraintreeCard.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.removeFramework(frameworkPath + "BraintreeApplePay.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.removeFramework(frameworkPath + "Braintree3DSecure.framework", {customFramework: true, embed: true, link: true});
+
 
           // First check to see if the Embed Framework node exists, if not, add it.
           // This is all we need to do as they are added to the embedded section by default.
@@ -86,8 +103,23 @@ module.exports = function(context) {
           xcodeProject.addBuildProperty("LD_RUNPATH_SEARCH_PATHS", "\"$(inherited) @executable_path/Frameworks\"", "Release");
 
           // Add the frameworks again.  This time they will have the code-sign option set so they get code signed when being deployed to devices.
+          // xcodeProject.addFramework(frameworkPath + "BraintreeVenmo.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "BraintreeUIKit.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "BraintreeDropIn.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "BraintreePayPal.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "BraintreeDataCollector.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "BraintreeCore.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "BraintreeCard.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "BraintreeApplePay.framework", {customFramework: true, embed: true, link: true});
+          // xcodeProject.addFramework(frameworkPath + "Braintree3DSecure.framework", {customFramework: true, embed: true, link: true});
+
+          xcodeProject.addFramework(frameworkPath + "PayPalUtils.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.addFramework(frameworkPath + "PayPalDataCollector.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.addFramework(frameworkPath + "PayPalOneTouch.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.addFramework(frameworkPath + "BraintreeVenmo.framework", {customFramework: true, embed: true, link: true});
-          xcodeProject.addFramework(frameworkPath + "BraintreeUI.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.addFramework(frameworkPath + "BraintreeUnionPay.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.addFramework(frameworkPath + "BraintreeUIKit.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.addFramework(frameworkPath + "BraintreeDropIn.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.addFramework(frameworkPath + "BraintreePayPal.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.addFramework(frameworkPath + "BraintreeDataCollector.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.addFramework(frameworkPath + "BraintreeCore.framework", {customFramework: true, embed: true, link: true});
