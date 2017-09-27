@@ -52,6 +52,7 @@ module.exports = function(context) {
           var targetUUID = xcodeProject.getFirstTarget().uuid;
 
           // Remove all of the frameworks because they were not embeded correctly.
+          /*
           var frameworkPath = cfg.name() + "/Plugins/cordova-plugin-braintree/";
           console.log("frameworkPath", frameworkPath);
           // xcodeProject.removeFramework(frameworkPath + "BraintreeVenmo.framework", {customFramework: true, embed: true, link: true});
@@ -92,7 +93,7 @@ module.exports = function(context) {
           else {
               console.log("Embedded Build Phase already added");
           }
-
+*/
           //BT - Add ShellScript to remove simulator libraries -> http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/
           buildPhaseResult = xcodeProject.addBuildPhase([], "PBXShellScriptBuildPhase", "Run Script", targetUUID,  "framework");
           buildPhaseResult.buildPhase.shellPath = "/bin/sh";
@@ -100,7 +101,7 @@ module.exports = function(context) {
           console.log("Adding Run Script Build Phase");
 
           // This is critical to include, otherwise the library loader cannot find the dynamic Braintree libs at runtime on a device.
-          xcodeProject.addBuildProperty("LD_RUNPATH_SEARCH_PATHS", "\"$(inherited) @executable_path/Frameworks\"", "Debug");
+/*          xcodeProject.addBuildProperty("LD_RUNPATH_SEARCH_PATHS", "\"$(inherited) @executable_path/Frameworks\"", "Debug");
           xcodeProject.addBuildProperty("LD_RUNPATH_SEARCH_PATHS", "\"$(inherited) @executable_path/Frameworks\"", "Release");
 
           // Add the frameworks again.  This time they will have the code-sign option set so they get code signed when being deployed to devices.
@@ -126,7 +127,7 @@ module.exports = function(context) {
           xcodeProject.addFramework(frameworkPath + "BraintreeCore.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.addFramework(frameworkPath + "BraintreeCard.framework", {customFramework: true, embed: true, link: true});
           xcodeProject.addFramework(frameworkPath + "BraintreeApplePay.framework", {customFramework: true, embed: true, link: true});
-          xcodeProject.addFramework(frameworkPath + "Braintree3DSecure.framework", {customFramework: true, embed: true, link: true});
+          xcodeProject.addFramework(frameworkPath + "Braintree3DSecure.framework", {customFramework: true, embed: true, link: true});*/
 
           // Save the project file back to disk.
           fs.writeFileSync(projectPath, xcodeProject.writeSync(), "utf-8");

@@ -164,6 +164,11 @@ NSString *countryCode;
         [self.viewController dismissViewControllerAnimated:YES completion:nil];
         if (error != nil) {
             NSLog(@"ERROR");
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"PayPal General Error."];
+            
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:dropInUIcallbackId];
+            dropInUIcallbackId = nil;
+
         } else if (result.cancelled) {
             if (dropInUIcallbackId) {
                 

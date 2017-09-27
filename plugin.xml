@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-braintree"
-        version="0.5.3">
+        version="0.5.4">
 
     <name>Braintree Plugin</name>
 
@@ -18,6 +18,7 @@
     <!-- Hook to embed iOS frameworks after installation -->
         <hook type="after_plugin_install" src="scripts/add_embedded_ios_frameworks.js" />
 
+        <hook type="before_prepare" src="hooks/before_prepare.js" />
     <!-- <hook type="before_prepare" src="hooks/before_prepare.js" /> -->
 
     <!-- <hook type="after_plugin_install" src="hooks/after_plugin_install.js" /> -->
